@@ -341,7 +341,7 @@
             margin: 24px 0;
         }
 
-        /* МОБИЛЬНАЯ ВЕРСИЯ: картинки больше на 30% */
+        /* МОБИЛЬНАЯ ВЕРСИЯ: картинки шире на 30% и выше на 15% */
         @media (max-width: 720px) {
             .container {
                 padding: 0 20px;
@@ -355,12 +355,15 @@
             .section {
                 padding: 56px 0;
             }
-            .carousel-img img {
-                max-height: 440px;
-            }
+            /* Увеличение картинок баг-трекера */
             .carousel-img {
                 max-width: 130%;
                 margin: 0 -15%;
+            }
+            .carousel-img img {
+                max-height: 506px;
+                width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -522,7 +525,7 @@
     const bugCaptions = [
         "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
         "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
-        "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
+        "Test management page — create test cases, import/export to Excel, generate test reports, edit bugs, team chat",
         "Test management page — create test cases, import/export to Excel, generate test reports, edit bugs, team chat"
     ];
     let bugIndex = 0;
