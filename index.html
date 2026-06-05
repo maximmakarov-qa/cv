@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Maxim Makarov · QA Engineer</title>
-    <!-- Google Fonts + Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -201,14 +200,13 @@
 
         .carousel-img {
             max-width: 100%;
-            border-radius: 24px;
-            border: 1px solid #2d4a6e;
-            background: #020617;
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.6);
+            background: transparent;
             position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        /* Кружочек загрузки */
         .carousel-img.loading {
             min-height: 200px;
             display: flex;
@@ -235,12 +233,12 @@
         .carousel-img img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
             display: block;
-            object-fit: cover;
+            object-fit: contain;
             max-height: 340px;
             opacity: 0;
             transition: opacity 0.3s ease;
+            border-radius: 0;
         }
 
         .carousel-img img.loaded {
@@ -341,7 +339,6 @@
             margin: 24px 0;
         }
 
-        /* МОБИЛЬНАЯ ВЕРСИЯ: картинки шире на 30% и выше на 15% */
         @media (max-width: 720px) {
             .container {
                 padding: 0 20px;
@@ -355,15 +352,8 @@
             .section {
                 padding: 56px 0;
             }
-            /* Увеличение картинок баг-трекера */
-            .carousel-img {
-                max-width: 130%;
-                margin: 0 -15%;
-            }
             .carousel-img img {
-                max-height: 506px;
-                width: 100%;
-                height: auto;
+                max-height: 240px;
             }
         }
     </style>
@@ -371,7 +361,6 @@
 <body>
 
 <main>
-    <!-- BLOCK 1: HERO -->
     <section class="section" style="padding-top: 100px;">
         <div class="container">
             <h1>Maxim Makarov</h1>
@@ -384,7 +373,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 2: KEY FACTS -->
     <section class="section">
         <div class="container">
             <div class="facts-grid">
@@ -396,7 +384,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 3: TECH STACK -->
     <section class="section">
         <div class="container">
             <h2>⚙️ Tech Stack</h2>
@@ -409,7 +396,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 4: WORK EXPERIENCE -->
     <section class="section">
         <div class="container">
             <h2>💼 Work Experience</h2>
@@ -424,7 +410,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 5: CUSTOM BUG TRACKING -->
     <section class="section">
         <div class="container">
             <h2>⚡ Custom Bug‑Tracking System</h2>
@@ -447,7 +432,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 6: CERTIFICATES -->
     <section class="section">
         <div class="container">
             <h2>📜 Coursera Certificates</h2>
@@ -470,7 +454,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 7: ABOUT -->
     <section class="section">
         <div class="container">
             <h2>🌍 About & Location</h2>
@@ -482,7 +465,6 @@
         </div>
     </section>
 
-    <!-- BLOCK 8: FOOTER / CONTACTS -->
     <footer class="footer" id="contacts-block">
         <div class="container">
             <div class="social-links">
@@ -498,34 +480,24 @@
 </main>
 
 <script>
-    // Функция для добавления кружочка загрузки к картинкам
     function addLoadingSpinner(imgElement, containerElement) {
         if (!imgElement || !containerElement) return;
-        
         containerElement.classList.add('loading');
-        
         imgElement.onload = function() {
             containerElement.classList.remove('loading');
             imgElement.classList.add('loaded');
         };
-        
         if (imgElement.complete) {
             containerElement.classList.remove('loading');
             imgElement.classList.add('loaded');
         }
     }
     
-    // ========== BUG TRACKING CAROUSEL ==========
-    const bugImages = [
-        "images/bug1.png",
-        "images/bug2.png",
-        "images/bug3.png",
-        "images/bug4.png"
-    ];
+    const bugImages = ["images/bug1.png", "images/bug2.png", "images/bug3.png", "images/bug4.png"];
     const bugCaptions = [
         "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
         "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
-        "Test management page — create test cases, import/export to Excel, generate test reports, edit bugs, team chat",
+        "Bug tracking page — create bugs, team chat, view bugs, filter by project, version, priority, status",
         "Test management page — create test cases, import/export to Excel, generate test reports, edit bugs, team chat"
     ];
     let bugIndex = 0;
@@ -544,7 +516,6 @@
             addLoadingSpinner(bugImgElem, bugContainer);
         }
     }
-    
     if (bugPrev && bugNext) {
         bugPrev.addEventListener("click", () => {
             bugIndex = (bugIndex - 1 + bugImages.length) % bugImages.length;
@@ -557,7 +528,6 @@
     }
     updateBugCarousel();
 
-    // ========== CERTIFICATES CAROUSEL ==========
     const certificates = [
         { title: "Continuous Integration and Continuous Delivery (CI/CD)", image: "images/cert1.png", link: "https://coursera.org/share/85a531ba71ffe9dc3a2abcc06f4f478a" },
         { title: "Introduction to Software Engineering", image: "images/cert2.png", link: "https://coursera.org/share/4d6718ba67e7060a5181fdb469f493d9" },
@@ -586,7 +556,6 @@
             addLoadingSpinner(certImg, certContainer);
         }
     }
-    
     if (certPrevBtn && certNextBtn) {
         certPrevBtn.addEventListener("click", () => {
             certIndex = (certIndex - 1 + certificates.length) % certificates.length;
@@ -599,7 +568,6 @@
     }
     updateCertCarousel();
 
-    // ========== WECHAT ==========
     const wechatBtn = document.getElementById("wechatLink");
     if(wechatBtn) {
         wechatBtn.addEventListener("click", (e) => {
